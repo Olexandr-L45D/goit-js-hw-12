@@ -1,5 +1,5 @@
 
-import {getImage} from "./js/pixabay-api"
+import {getImage} from "./js/pixaday-api"
  import {fechGallery, refs} from "./js/render-functions"
 import {renderGalleryMarkap} from "./js/render-functions"
 
@@ -34,4 +34,3 @@ function onFormSubmit(event) {
     
 }
 
-//  if (data.hits === 0) 
