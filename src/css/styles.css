@@ -193,7 +193,8 @@ margin: 0px;
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  position: relative;
+  /* position: relative; */
+  position: bottom;
   animation: rotate 1s linear infinite;
   display: block;
   margin: 150px auto;
