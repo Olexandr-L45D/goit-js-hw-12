@@ -56,8 +56,10 @@ ol {
   width: 1400px;
   padding: 0px;
   margin: 0 auto;
+  display: flex;
   align-items: center;
   text-align: center;
+  flex-direction: column;
 }
 
 .uzers-form-image {
@@ -110,15 +112,15 @@ ol {
 .btn-botton-load {
   margin: 5px;
   border-radius: 8px;
-  padding: 12px 15px;
-  width: 200px;
-  height: 46px;
-  display: flex;
+  padding: 12px 25px;
+  width: 125px;
+  height: 40px;
   color: #fff;
-  flex-direction: row;
   background: #4e75ff;
   font-weight: 500;
-  
+  display: flex;
+  align-items: center;
+  text-align: center;
 }
 .form-link {
   text-decoration: none;
@@ -180,7 +182,7 @@ height: 200px;
 border-radius: 5px;
 margin: 5px;
 }
-.gallery-commant {
+/* .gallery-commant {
   padding: 5px;
   margin: 5px;
   text-align: center;
@@ -193,8 +195,8 @@ margin: 0px;
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  /* position: relative; */
-  position: bottom;
+  position: absolute;
+  bottom: 0;
   animation: rotate 1s linear infinite;
   display: block;
   margin: 150px auto;
@@ -240,4 +242,4 @@ margin: 0px;
   100% {
     clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 0);
   }
-}
+} */
