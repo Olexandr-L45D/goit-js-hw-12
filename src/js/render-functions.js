@@ -51,7 +51,7 @@ galleryContainer.addEventListener('submit', renderGalleryMarkap);
 
 // функція виклика повідомлення про помилку and iziToast
 
-export function fechGallery(error) {
+export function handlerErrorUzer(error) {
   switch (error)
     {
     case 'outdata':

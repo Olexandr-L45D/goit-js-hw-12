@@ -1,7 +1,10 @@
 
-import {getImage} from "./js/pixaday-api"
- import {fechGallery, refs} from "./js/render-functions"
+//import {getImage} from "./js/pixaday-api"
+import {getAsyncImage, generateSearchstr} from "./js/pixaday-api"
+ import {handlerErrorUzer, refs} from "./js/render-functions"
 import {renderGalleryMarkap} from "./js/render-functions"
+//console.log(generateSearchstr);
+
 
 refs.formSearchImage.addEventListener('submit', onFormSubmit);
 
@@ -11,23 +14,24 @@ function onFormSubmit(event) {
     const photQueryValue = form.elements.searchQuery.value.toLowerCase().trim(); //значення яке написав користувач
     const searchText = event.target.searchQuery.value.trim();
   if (searchText === "") {
-    fechGallery('outdata');
+    handlerErrorUzer('outdata');
     return;
   }
      refs.gallery.innerHTML = '';
      refs.loader.classList.add('loader');
-   
-    getImage(photQueryValue)
+     getAsyncImage(generateSearchstr(searchText))// аналогія моєї передачі, але searchText-значення з pixaday-api (searchSettings.q = searchText;)
+     //getAsyncImage(photQueryValue)
+    //getImage(photQueryValue)// те саме!
     .then(data => {
       renderGalleryMarkap(data.hits)
       refs.loader.classList.remove('loader');
       if (data.totalHits === 0) {
-          fechGallery('nodata');  
+        handlerErrorUzer('nodata');  
     }
   }).catch(error => {
     refs.loader.classList.remove('loader');
     
-        fechGallery(error);
+    handlerErrorUzer(error);
           })
     .finally(() => 
         form.reset()); //очистка тексту в інпуті
