@@ -23,7 +23,7 @@ const API_KEY = "44760113-b733d2f51a4c6409aa3483a05";
     }
     
     async function getAsyncImage(neWurls) {
-      const response = await axios.get(`/${neWurls}`);
+      const response = await axios.get(`/key=${API_KEY}&${neWurls}`);
       return response.data;
         //return (await axios.get(`key=${API_KEY}&${qveryURL}`)).data
     }
@@ -44,7 +44,7 @@ const API_KEY = "44760113-b733d2f51a4c6409aa3483a05";
 
 
 
-    
+
      
 //example  try...catch (error)
     //  try {
