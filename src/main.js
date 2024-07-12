@@ -1,10 +1,8 @@
 
-//import {getImage} from "./js/pixaday-api"
-import {getAsyncImage, generateSearchstr, doStuff} from "./js/pixaday-api"
+
+import {getAsyncImage, generateSearchstr} from "./js/pixaday-api"
  import {handlerErrorUzer, refs} from "./js/render-functions"
 import {renderGalleryMarkap} from "./js/render-functions"
-//console.log(doStuff);
-
 
 refs.formSearchImage.addEventListener('submit', onFormSubmit);
 
@@ -20,8 +18,6 @@ function onFormSubmit(event) {
      refs.gallery.innerHTML = '';
      refs.loader.classList.add('loader');
      getAsyncImage(generateSearchstr(searchText))// аналогія моєї передачі, але searchText-значення з pixaday-api (searchSettings.q = searchText;)
-     //getAsyncImage(photQueryValue)
-    //getImage(photQueryValue)// те саме!
     .then(data => {
       renderGalleryMarkap(data.hits)
       refs.loader.classList.remove('loader');

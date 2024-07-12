@@ -1,11 +1,8 @@
-// запит фечь з бібліотеки за допомогою axios і асинхронної функції async/await
+
 import axios from 'axios';
 axios.defaults.baseURL = 'https://pixabay.com/api/';//тут посилання на базовий УРЛ
 const API_KEY = "44760113-b733d2f51a4c6409aa3483a05";
-//axios.defaults.headers = API_KEY; // назва заголовка
 
-//   // return (await axios.get(`${urlRaqeuestes}&${searchParams}`)).data
-// такий варіант передачі KEY та параметрів
       const searchSettings = {
         key: '44760113-b733d2f51a4c6409aa3483a05',
         q: '',
@@ -22,25 +19,46 @@ const API_KEY = "44760113-b733d2f51a4c6409aa3483a05";
         
     }
     
-    async function getAsyncImage(neWurls) {
-      const response = await axios.get(`/key=${API_KEY}&${neWurls}`);
+    async function getAsyncImage(qveryURL) {
+      const response = await axios.get(`key=${API_KEY}?${searchText}`); //searchQuery
       return response.data;
-        //return (await axios.get(`key=${API_KEY}&${qveryURL}`)).data
+        
     }
     export {getAsyncImage}
-    //getAsyncImage().then(console.log).catch(console.log)
-    //.then(data => console.log(data));
-    const doStuff = async () => {
-      try {
-        const users = await getAsyncImage();
-        console.log(users);
-      } catch (error) {
-        console.log(error);
-      }
-    };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
-    doStuff();
-    export {doStuff}
+    // const doStuff = async () => {
+    //   try {
+    //     const users = await getAsyncImage();
+    //     console.log(users);
+    //   } catch (error) {
+    //     console.log(error);
+    //   }
+    // };
+    
+    // doStuff();
+    // export {doStuff}
 
 
 

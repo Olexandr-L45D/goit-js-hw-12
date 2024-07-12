@@ -76,40 +76,35 @@ export function handlerErrorUzer(error) {
   }
 }
 //add code to list naxt clic
-// const fetchPostsBtn = document.querySelector(".btn");
-// const postList = document.querySelector(".posts");
+//  const fetchPostsBtn = document.querySelector(".js-btn");// це кнопка перегортання далі на нову стаорінку при кліку
+//  const postList = document.querySelector(".posts");// це ул куди при кліку додаємо нову сторінку (та сама галерея)
 
-// // Controls the group number
 // let page = 1;
-// // Controls the number of items in the group
-// let limit = 40;
+// let limit = 10;
 // // In our case total number of pages is calculated on frontend
 // const totalPages = Math.ceil(100 / limit);
 
 // fetchPostsBtn.addEventListener("click", async () => {
-//   // Check the end of the collection to display an alert
+//   // Check the end of the collection to display an alert (якщо колекція закінчилась)
 //   if (page > totalPages) {
 //     return iziToast.error({
 //       position: "topRight",
-//       message: "We're sorry, there are no more posts to load"
+//       message: "We're sorry, but you've reached the end of search results."
 //     });
 //   }
 
 //   try {
 //     const posts = await fetchPosts();
-//     renderPosts(posts);
-//     // Increase the group number
+//     renderPosts(posts); // Increase the group number
 //     page += 1;
-
-//     // Replace button text after first request
 //     if (page > 1) {
-//       fetchPostsBtn.textContent = "Fetch more posts";
+//       fetchPostsBtn.textContent = "Fetch more posts";  // Replace button text after first request
 //     }
 //   } catch (error) {
 //     console.log(error);
 //   }
 // });
-
+// //У відповіді бекенд повертає властивість totalHits — загальна кількість зображень
 // async function fetchPosts() {
 //   const params = new URLSearchParams({
 //     _limit: limit,
@@ -117,24 +112,35 @@ export function handlerErrorUzer(error) {
 //   });
 
 //   const response = await axios.get(
-//     `https://jsonplaceholder.typicode.com/posts?${params}`
+//     `key=${API_KEY}/posts?${params}`
 //   );
 //   return response.data;
 // }
 
-// function renderPosts(posts) {
-//   const markup = posts
-//     .map(({ id, title, body, userId }) => {
-//       return `<li>
-//           <h2 class="post-title">${title.slice(0, 30)}</h2>
-//           <p><b>Post id</b>: ${id}</p>
-//           <p><b>Author id</b>: ${userId}</p>
-//           <p class="post-body">${body}</p>
-//         </li>`;
-//     })
-//     .join("");
-//   postList.insertAdjacentHTML("beforeend", markup);
-// }
+//  function renderPosts(images) {
+
+// const element = document.getElementsByClassName(".posts");
+//     element.innerHTML = "";
+//     const markup = images
+//     .map((image) =>  
+//       ` 
+//     <li class="gallery-item">
+//               <h2 class="post-title">${title.slice(0, 15)}</h2>
+//     <a class="gallery-link" href="${image.largeImageURL}">
+//     <img class="gallery-image" src="${image.webformatURL}" alt="${image.tags}" title="${image.name}"/></a>
+//     <div class="gallery-paragraf">
+//     <p class="gallery-commant">likes ${image.likes}</p>
+//     <p class="gallery-commant">views ${image.views}</p>
+//     <p class="gallery-commant">comments ${image.comments}</p>
+//     <p class="gallery-commant">downloads ${image.downloads}</p>
+//     </div>
+//     </li> 
+//      ` )
+//       .join("")
+//       postList.insertAdjacentHTML("beforeend", markup);
+//       lightbox.refresh();
+//  }
+
 // Контролює кількість елементів в групі
 //let limit = 30;
 // Кількість груп в колекції
