@@ -1,9 +1,9 @@
 
 //import {getImage} from "./js/pixaday-api"
-import {getAsyncImage, generateSearchstr} from "./js/pixaday-api"
+import {getAsyncImage, generateSearchstr, doStuff} from "./js/pixaday-api"
  import {handlerErrorUzer, refs} from "./js/render-functions"
 import {renderGalleryMarkap} from "./js/render-functions"
-//console.log(generateSearchstr);
+//console.log(doStuff);
 
 
 refs.formSearchImage.addEventListener('submit', onFormSubmit);

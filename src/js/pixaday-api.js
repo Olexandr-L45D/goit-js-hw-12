@@ -2,7 +2,7 @@
 import axios from 'axios';
 axios.defaults.baseURL = 'https://pixabay.com/api/';//тут посилання на базовий УРЛ
 const API_KEY = "44760113-b733d2f51a4c6409aa3483a05";
-axios.defaults.headers.common["hits"] = API_KEY; // назва заголовка
+//axios.defaults.headers = API_KEY; // назва заголовка
 
 //   // return (await axios.get(`${urlRaqeuestes}&${searchParams}`)).data
 // такий варіант передачі KEY та параметрів
@@ -19,14 +19,41 @@ axios.defaults.headers.common["hits"] = API_KEY; // назва заголовк�
         searchSettings.q = searchText;
         const neWurls = new URLSearchParams(searchSettings);
         return `https://pixabay.com/api/?${neWurls}`;
+        
     }
+    
+    async function getAsyncImage(neWurls) {
+      const response = await axios.get(`/${neWurls}`);
+      return response.data;
+        //return (await axios.get(`key=${API_KEY}&${qveryURL}`)).data
+    }
+    export {getAsyncImage}
+    //getAsyncImage().then(console.log).catch(console.log)
+    //.then(data => console.log(data));
+    const doStuff = async () => {
+      try {
+        const users = await getAsyncImage();
+        console.log(users);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    
+    doStuff();
+    export {doStuff}
+
+
+
+    
      
-    async function getAsyncImage(searchText) {
-      //return fetch(qveryURL)
-        return (await axios.get(`key=${API_KEY}&${searchText}`)).data
-    }
-      
-     export {getAsyncImage}
+//example  try...catch (error)
+    //  try {
+    //   const result = 10 / 0;
+    //   console.log(result); // Цей рядок не виконається через помилку
+    // } catch (error) {
+    //   // Обробимо помилку
+    //   console.error(error.message);
+    // }
 
       // export function getAsyncImage(qveryURL) {
       //   return fetch(qveryURL).then(response => {
@@ -37,16 +64,22 @@ axios.defaults.headers.common["hits"] = API_KEY; // назва заголовк�
       //   });
       // }
 
- // далі треба використати клас URLSearchParams (_limit: 15,)
+// приклад простого запису асінк з АХСІОС
+//       const fetchUsers = async () => {
+//         const response = await axios.get("https://jsonplaceholder.typicode.com/users");
+//         return response.data;
+//       };
+      
+//       fetchUsers()
+//         .then(users => console.log(users));
+
+ // далі треба використати клас URLSearchParams (_limit: 15,) (цей ліміт вже вказав в обєкті searchSettings)
 // це ліміт на 15 зображень в одному запиті(на базі прототипу URLSearchParams )
 // const searchParams = new URLSearchParams({
 //     _limit: 15,
 //     _sort: "name",
 //   });
-      // neWurls = {
-      //   _limit: 15,
-      //   _sort: "q",
-      // }
+      
 
 
   // export function getImage(str) {
