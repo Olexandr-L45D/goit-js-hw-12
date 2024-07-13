@@ -202,8 +202,8 @@ margin: 5px;
   margin: 0;
 }
 
-
-/* .gallery-commant {
+ 
+ .gallery-commant {
   padding: 5px;
   margin: 5px;
   text-align: center;
@@ -263,4 +263,4 @@ margin: 0px;
   100% {
     clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 0);
   }
-} */
+} 

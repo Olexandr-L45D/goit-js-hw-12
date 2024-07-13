@@ -24,9 +24,11 @@
 <main>
   
     <div class="container">
-      <span class="loader"></span> <!-- для відображення спінера -->
        <ul class="gallery posts"></ul> 
-       <button class="btn-botton-load js-btn" type="button">Load more</button>
+       <button class="btn-botton-load js-btn" type="button" data-action="load-more">Load more</button>
+       <span class="spinner-border spinner-border-sm spinner js-hidden" role="status" aria-hidden="true"></span>
+       <span class="label">Показати ще</span>
+       <span class="loader"></span> <!-- для відображення спінера -->
     </div>
     <div class="loader" style="vertical-align: bottom;"></div>
 </main> 

@@ -23,6 +23,7 @@ export const refs = {
   loader: document.querySelector('.loader'),
 };
 
+  const loadMoreBtn = document.querySelector('[data-action="load-more"]'); //  це прислуховуєм кнопку з спінером
 const galleryContainer = document.querySelector('.gallery'); // function створює розмітку для галереї
 galleryContainer.addEventListener('submit', renderGalleryMarkap);
 
@@ -75,6 +76,19 @@ export function handlerErrorUzer(error) {
       break;
   }
 }
+// приклад асинхронної стрілочної функції 
+// const doStuff = async () => {
+    //   try {
+    //     const users = await getAsyncImage(); тут передаю функцію яку хочу обробити в try...catch
+    //     console.log(users);
+    //   } catch (error) {
+    //     console.log(error);
+    //   }
+    // };
+    
+    // doStuff();
+    // export {doStuff}
+
 //add code to list naxt clic
 //  const fetchPostsBtn = document.querySelector(".js-btn");// це кнопка перегортання далі на нову стаорінку при кліку
 //  const postList = document.querySelector(".posts");// це ул куди при кліку додаємо нову сторінку (та сама галерея)
