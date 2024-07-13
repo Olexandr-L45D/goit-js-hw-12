@@ -1,30 +1,38 @@
 
 import axios from 'axios';
-axios.defaults.baseURL = 'https://pixabay.com/api/';//тут посилання на базовий УРЛ
+const BASE_URL = "https://pixabay.com/api/";
 const API_KEY = "44760113-b733d2f51a4c6409aa3483a05";
+//axios.defaults.baseURL = BASE_URL;  //тут посилання на базовий УРЛ
+//ENDPOINT = "";
 
-      const searchSettings = {
-        key: '44760113-b733d2f51a4c6409aa3483a05',
-        q: '',
+
+      const params = {
+        //apiKey: API_KEY,
+        q: "",
+        page: 1,
+        per_page: 15,
         image_type: 'photo',
         orientation: 'horizontal',
         safesearch: true,
-        per_page: 15,
+        //language: "en"
       };
       
       export function generateSearchstr(searchText) {
-        searchSettings.q = searchText;
-        const neWurls = new URLSearchParams(searchSettings);
+        params.q = searchText;
+        const neWurls = new URLSearchParams(params);
         return `https://pixabay.com/api/?${neWurls}`;
         
     }
     
-    async function getAsyncImage(qveryURL) {
-      const response = await axios.get(`key=${API_KEY}?${searchText}`); //searchQuery
-      return response.data;
+     function getAsyncImage({ q = "", page = 1, per_page = 15}={}) {
+      return axios.get(`${BASE_URL}?key=${API_KEY}`, {
+        params: {
+           q, page, per_page
+        }
+      }).then(({data}) => data);
         
     }
-    export {getAsyncImage}
+    export {getAsyncImage};
 
 
 
