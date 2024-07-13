@@ -25,12 +25,20 @@
   
     <div class="container">
        <ul class="gallery posts"></ul> 
-       <button class="btn-botton-load js-btn" type="button" data-action="load-more">Load more</button>
-       <span class="spinner-border spinner-border-sm spinner js-hidden" role="status" aria-hidden="true"></span>
-       <span class="label">Показати ще</span>
-       <span class="loader"></span> <!-- для відображення спінера -->
+       <button class="button-load js-btn" type="button" data-action="load-more">Load more</button>
+       <span class="spinner-border spinner-border-sm spinner js-hidden" role="status" aria-hidden="true"></span> <!-- для відображення спінера в кнопці-->
+       
+    <!-- <div class="spinner">
+      </div>
+      <div class="spinner-border text-info" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div> -->
+
+       <!-- <span class="loader"></span>  -->
+       <!-- для відображення спінера на сторінці-->
     </div>
-    <div class="loader" style="vertical-align: bottom;"></div>
+    
 </main> 
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

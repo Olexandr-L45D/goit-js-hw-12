@@ -23,7 +23,6 @@ export const refs = {
   loader: document.querySelector('.loader'),
 };
 
-  const loadMoreBtn = document.querySelector('[data-action="load-more"]'); //  це прислуховуєм кнопку з спінером
 const galleryContainer = document.querySelector('.gallery'); // function створює розмітку для галереї
 galleryContainer.addEventListener('submit', renderGalleryMarkap);
 
@@ -76,6 +75,32 @@ export function handlerErrorUzer(error) {
       break;
   }
 }
+
+const loadMoreBtn = document.querySelector('[data-action="load-more"]'); //  це прислуховуєм кнопку з спінером
+const spinner = document.querySelector(".spinner")
+
+const hiddenElementList = "is-hidden";
+// взагалі прирати (коли кінець колекції або до запиту(до сабміту))
+function hide(button) {
+  button.classList.add(hiddenElementList);
+}
+// активна
+function show(button) {
+  button.classList.remove(hiddenElementList);
+}
+// при запиті відображається але не активна для натискання і крутиться прелоудер-show this spinner
+function disable(button, spinner ) {
+  button.disable = true;
+  spinner.classList.remove(hiddenElementList);
+}
+// -show this button and hide this spinner
+ function enable(button, spinner) {
+  button.disable = falce; 
+  spinner.classList.add(hiddenElementList);
+ }
+export default {hide,
+  show, disable, enable};
+
 // приклад асинхронної стрілочної функції 
 // const doStuff = async () => {
     //   try {

@@ -109,7 +109,7 @@ ol {
 .button-submit:focus {
   background-color: #6c8cff;
 }
-.btn-botton-load {
+.button-load {
   margin: 5px;
   border-radius: 8px;
   padding: 12px 25px;
@@ -122,6 +122,13 @@ ol {
   align-items: center;
   text-align: center;
 }
+.button-load.is-hidden {
+  display: none;
+}
+.button-load > spinner.is-hidden {
+  display: none;
+}
+
 .form-link {
   text-decoration: none;
 }
@@ -212,15 +219,21 @@ margin: 5px;
 font-size: 1rem;
 margin: 0px;
 }
+
+/* 
 .loader {
   width: 48px;
   height: 48px;
   border-radius: 50%;
   position: absolute;
-  bottom: 0;
-  animation: rotate 1s linear infinite;
+  top: 0;
+  /* bottom: 0; */
+  /* animation: rotate 1s linear infinite;
   display: block;
   margin: 150px auto;
+}
+.loader.hidden {
+  display: none;
 }
 .loader::before,
 .loader::after {
@@ -237,7 +250,9 @@ margin: 0px;
   animation: prixClipFix 2s linear infinite, rotate 0.5s linear infinite reverse;
   inset: 6px;
 }
-
+.loader.hidden {
+  display: none;
+}
 @keyframes rotate {
   0% {
     transform: rotate(0deg);
@@ -262,5 +277,29 @@ margin: 0px;
   }
   100% {
     clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 0);
+} } */
+
+/* 
+.spinner-border {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  display: block;
+  margin: 150px auto;
+}
+
+@keyframes spinner-border {
+  to { transform: rotate(360deg)  }
+}
+
+@keyframes spinner-grow {
+  0% {
+    transform: scale(0);
   }
-} 
+  50% {
+    opacity: 1;
+    transform: none;
+  }
+}  */
