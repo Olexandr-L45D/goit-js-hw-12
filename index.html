@@ -9,7 +9,7 @@
     <script type="module" crossorigin src="/goit-js-hw-12/commonHelpers.js"></script>
     <link rel="modulepreload" crossorigin href="/goit-js-hw-12/assets/vendor-b11e2a50.js">
     <link rel="stylesheet" href="/goit-js-hw-12/assets/vendor-4b066c51.css">
-    <link rel="stylesheet" href="/goit-js-hw-12/assets/index-a86a9f95.css">
+    <link rel="stylesheet" href="/goit-js-hw-12/assets/index-fc8e1bf0.css">
   </head>
   <body>
     
@@ -28,9 +28,11 @@
 <main>
   
     <div class="container">
-      <span class="loader"></span> <!-- для відображення спінера -->
        <ul class="gallery posts"></ul> 
-       <button class="btn-botton-load js-btn" type="button">Load more</button>
+       <button class="btn-botton-load js-btn" type="button" data-action="load-more">Load more</button>
+       <span class="spinner-border spinner-border-sm spinner js-hidden" role="status" aria-hidden="true"></span>
+       <span class="label">Показати ще</span>
+       <span class="loader"></span> <!-- для відображення спінера -->
     </div>
     <div class="loader" style="vertical-align: bottom;"></div>
 </main> 
