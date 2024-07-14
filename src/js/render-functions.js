@@ -21,6 +21,9 @@ export const refs = {
   formSearchImage: document.querySelector(".uzers-form-image"),
   gallery: document.querySelector('.gallery'),
   loader: document.querySelector('.loader'),
+  loadMoreBtn: document.querySelector('[data-action="load-more"]'), //  це прислуховуєм кнопку з спінером
+  spinner: document.querySelector(".spinner"), // це спінером on button botton кнопку 
+  spinnerText: document.querySelector(".spinner-text") // це спінер тектом під кнопкою
 };
 
 const galleryContainer = document.querySelector('.gallery'); // function створює розмітку для галереї
@@ -76,29 +79,27 @@ export function handlerErrorUzer(error) {
   }
 }
 
-const loadMoreBtn = document.querySelector('[data-action="load-more"]'); //  це прислуховуєм кнопку з спінером
-const spinner = document.querySelector(".spinner")
 
-const hiddenElementList = "is-hidden";
+const hiddenBattonClass = "is-hidden";
 // взагалі прирати (коли кінець колекції або до запиту(до сабміту))
-function hide(button) {
-  button.classList.add(hiddenElementList);
+function hiden(button) {
+  button.classList.add(hiddenBattonClass);
 }
 // активна
 function show(button) {
-  button.classList.remove(hiddenElementList);
+  button.classList.remove(hiddenBattonClass);
 }
 // при запиті відображається але не активна для натискання і крутиться прелоудер-show this spinner
 function disable(button, spinner ) {
   button.disable = true;
-  spinner.classList.remove(hiddenElementList);
+  spinner.classList.remove(hiddenBattonClass);
 }
 // -show this button and hide this spinner
  function enable(button, spinner) {
   button.disable = falce; 
-  spinner.classList.add(hiddenElementList);
+  spinner.classList.add(hiddenBattonClass);
  }
-export default {hide,
+export {hiden,
   show, disable, enable};
 
 // приклад асинхронної стрілочної функції 
