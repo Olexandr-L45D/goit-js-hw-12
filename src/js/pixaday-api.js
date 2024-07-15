@@ -14,13 +14,16 @@ axios.defaults.baseURL = BASE_URL;  //тут посилання на базов�
         safesearch: true,
         maxPage: 0 // додатковий параметр(який я потім порахую) для обчислення останньої сторінки
       };
-      export {params};    
+
+      export {params};  
+
   async  function getAsyncImage(searchText) {
     params.q = searchText;
      const neWurls = new URLSearchParams(params);  
     const response = await axios.get(`?${neWurls}`)
       return response.data;
-    }
+    };
+    
     export {getAsyncImage};
 
 

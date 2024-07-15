@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
-    
+<div class="container">  
  <header class="header">
 
   <div class="uzers-form-container"> 
@@ -18,25 +18,22 @@
         <input class="input-stule" type="text" name="searchQuery" id="form-photo" />
       </label>
       <button class="button-submit" type="submit" value="search">Search</button> 
-       </form>
-  </div>
-</header>
-<main>
+      </form>
   
-  <div class="container">
+ </header>
+ <main>
+  
        <ul class="gallery posts"></ul> 
-       <button class="button-load button js-btn" type="button" data-action="load-more">Load more</button>
-       <span class="spinner-border spinner-border-sm spinner js-hidden" role="status" aria-hidden="true"></span> <!-- для відображення спінера в кнопці-->
-       <div class="spinner-border text-info" role="status" aria-hidden="true">
-        <span class="visually-hidden spinner-text spinner js-hidden">Loading more...</span> <!-- спінер текст під кнопкою (по ДЗ)-->
-      </div>
-    
-       <!-- <span class="loader"></span>  -->
-       <!-- для відображення спінера на сторінці-->
-    </div>
-    
-</main> 
-
+       <div class="button-container">
+         
+        <button class="button-load button js-btn hidden" type="button" data-action="load-more">Load more</button>
+         
+        <div class="spinner-border text-info" role="status" aria-hidden="true"></div>
+          <span class="visually-hidden spinner-text spinner js-hidden hidden">Loading more...</span> <!-- спінер текст під кнопкою (по ДЗ)-->
+        
+       </div>
+ </main> 
+</div>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script type="module" src="./main.js"></script>
   </body>

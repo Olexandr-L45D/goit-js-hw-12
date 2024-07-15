@@ -53,13 +53,9 @@ ol {
 }
 
 .container {
-  width: 1400px;
+  width: 1440px;
   padding: 0px;
   margin: 0 auto;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  flex-direction: column;
 }
 
 .uzers-form-image {
@@ -78,10 +74,9 @@ ol {
   display: flex;
   align-items: center;
   text-align: center;
-  /* flex-direction: column; */
 }
 .input-stule {
-    /* normal, hover, press */
+    /* normal, hover*/
   border-radius: 4px;
   padding: 5px;
   margin: 0 auto;
@@ -105,6 +100,16 @@ ol {
   transition: background-color 250ms ease-in-out;
 }
 
+.button-container {
+  width: 300px;
+  padding: 0px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  text-align: center;
+   flex-direction: column; 
+}
+
 .button-submit:hover,
 .button-submit:focus {
   background-color: #6c8cff;
@@ -122,18 +127,24 @@ ol {
   align-items: center;
   text-align: center;
 }
-.button-load.is-hidden {
+.button-load.hidden {
+  display: none;
+}
+/* .button-load.is-hidden {
   display: none;
 }
 .button-load > spinner.is-hidden {
   display: none;
-}
-.spinner-text.is-hidden {
+} */
+/* .spinner-text.is-hidden {
+  display: none;
+} */
+.spinner-text.hidden {
   display: none;
 }
-.spinner-text > spinner.is-hidden {
+/* .spinner-text > spinner.is-hidden {
   display: none;
-}
+} */
 
 .form-link {
   text-decoration: none;
@@ -225,87 +236,3 @@ margin: 5px;
 font-size: 1rem;
 margin: 0px;
 }
-
-/* 
-.loader {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  position: absolute;
-  top: 0;
-  /* bottom: 0; */
-  /* animation: rotate 1s linear infinite;
-  display: block;
-  margin: 150px auto;
-}
-.loader.hidden {
-  display: none;
-}
-.loader::before,
-.loader::after {
-  content: '';
-  box-sizing: border-box;
-  position: absolute;
-  border-radius: 50%;
-  inset: 0px;
-  border: 5px solid green;
-  animation: prixClipFix 2s linear infinite;
-}
-.loader::after {
-  border-color: #ff3d00;
-  animation: prixClipFix 2s linear infinite, rotate 0.5s linear infinite reverse;
-  inset: 6px;
-}
-.loader.hidden {
-  display: none;
-}
-@keyframes rotate {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes prixClipFix {
-  0% {
-    clip-path: polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0);
-  }
-  25% {
-    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 0, 100% 0, 100% 0);
-  }
-  50% {
-    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%);
-  }
-  75% {
-    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 100%);
-  }
-  100% {
-    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 0);
-} } */
-
-/* 
-.spinner-border {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  position: absolute;
-  top: 0;
-  display: block;
-  margin: 150px auto;
-}
-
-@keyframes spinner-border {
-  to { transform: rotate(360deg)  }
-}
-
-@keyframes spinner-grow {
-  0% {
-    transform: scale(0);
-  }
-  50% {
-    opacity: 1;
-    transform: none;
-  }
-}  */

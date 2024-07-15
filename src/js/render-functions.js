@@ -20,9 +20,7 @@ var lightbox = new SimpleLightbox('.gallery a', { captionDelay: 200, captionsDat
 export const refs = {
   formSearchImage: document.querySelector(".uzers-form-image"),
   gallery: document.querySelector('.gallery'),
-  loader: document.querySelector('.loader'),
   loadMoreBtn: document.querySelector('[data-action="load-more"]'), //  це прислуховуєм кнопку з спінером
-  spinner: document.querySelector(".spinner"), // це спінером on button botton кнопку 
   spinnerText: document.querySelector(".spinner-text") // це спінер тектом під кнопкою
 };
 
@@ -80,114 +78,23 @@ export function handlerErrorUzer(error) {
 }
 
 
-const hiddenBattonClass = "is-hidden";
-// взагалі прирати (коли кінець колекції або до запиту(до сабміту))
+// const hiddenBattonClass = "is-hidden";
+const hiddenBattonClass = "hidden";
+// взагалі зникає (коли кінець колекції або до запиту(до сабміту))
 function hiden(button) {
   button.classList.add(hiddenBattonClass);
-}
-// активна
+} // активна
 function show(button) {
   button.classList.remove(hiddenBattonClass);
-}
-// при запиті відображається але не активна для натискання і крутиться прелоудер-show this spinner
+} // при запиті відображається але не активна для натискання і прелоудер-show this spinner
 function disable(button, spinner ) {
-  button.disable = true;
+  button.disabled = true;
   spinner.classList.remove(hiddenBattonClass);
-}
-// -show this button and hide this spinner
- function enable(button, spinner) {
-  button.disable = falce; 
-  spinner.classList.add(hiddenBattonClass);
- }
-export {hiden,
-  show, disable, enable};
-
-// приклад асинхронної стрілочної функції 
-// const doStuff = async () => {
-    //   try {
-    //     const users = await getAsyncImage(); тут передаю функцію яку хочу обробити в try...catch
-    //     console.log(users);
-    //   } catch (error) {
-    //     console.log(error);
-    //   }
-    // };
-    
-    // doStuff();
-    // export {doStuff}
-
-//add code to list naxt clic
-//  const fetchPostsBtn = document.querySelector(".js-btn");// це кнопка перегортання далі на нову стаорінку при кліку
-//  const postList = document.querySelector(".posts");// це ул куди при кліку додаємо нову сторінку (та сама галерея)
-
-// let page = 1;
-// let limit = 10;
-// // In our case total number of pages is calculated on frontend
-// const totalPages = Math.ceil(100 / limit);
-
-// fetchPostsBtn.addEventListener("click", async () => {
-//   // Check the end of the collection to display an alert (якщо колекція закінчилась)
-//   if (page > totalPages) {
-//     return iziToast.error({
-//       position: "topRight",
-//       message: "We're sorry, but you've reached the end of search results."
-//     });
-//   }
-
-//   try {
-//     const posts = await fetchPosts();
-//     renderPosts(posts); // Increase the group number
-//     page += 1;
-//     if (page > 1) {
-//       fetchPostsBtn.textContent = "Fetch more posts";  // Replace button text after first request
-//     }
-//   } catch (error) {
-//     console.log(error);
-//   }
-// });
-// //У відповіді бекенд повертає властивість totalHits — загальна кількість зображень
-// async function fetchPosts() {
-//   const params = new URLSearchParams({
-//     _limit: limit,
-//     _page: page
-//   });
-
-//   const response = await axios.get(
-//     `key=${API_KEY}/posts?${params}`
-//   );
-//   return response.data;
-// }
-
-//  function renderPosts(images) {
-
-// const element = document.getElementsByClassName(".posts");
-//     element.innerHTML = "";
-//     const markup = images
-//     .map((image) =>  
-//       ` 
-//     <li class="gallery-item">
-//               <h2 class="post-title">${title.slice(0, 15)}</h2>
-//     <a class="gallery-link" href="${image.largeImageURL}">
-//     <img class="gallery-image" src="${image.webformatURL}" alt="${image.tags}" title="${image.name}"/></a>
-//     <div class="gallery-paragraf">
-//     <p class="gallery-commant">likes ${image.likes}</p>
-//     <p class="gallery-commant">views ${image.views}</p>
-//     <p class="gallery-commant">comments ${image.comments}</p>
-//     <p class="gallery-commant">downloads ${image.downloads}</p>
-//     </div>
-//     </li> 
-//      ` )
-//       .join("")
-//       postList.insertAdjacentHTML("beforeend", markup);
-//       lightbox.refresh();
+} // -show this button and hide this spinner
+//  function enable(button, spinner) {
+//   button.disabled = falce; 
+//   spinner.classList.add(hiddenBattonClass);
 //  }
+export {hiden, show, disable};
 
-// Контролює кількість елементів в групі
-//let limit = 30;
-// Кількість груп в колекції
-//const totalPages = Math.ceil(100 / limit);
-// if (page > totalPages) {
-//   return iziToast.error({
-//     position: "topRight",
-//     message: "We're sorry, there are no more posts to load"
-//   });
-// }
+
