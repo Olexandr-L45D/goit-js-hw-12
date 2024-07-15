@@ -32,6 +32,7 @@ params.page = 1;
       disable(refs.loadMoreBtn, refs.spinnerText);
 
       refs.loadMoreBtn.addEventListener("click", createNewCard); // прослуховуе кнопку >Load more< по кліку
+
     } catch (error) {
       console.log(error);
       handlerErrorUzer(error);
@@ -67,7 +68,18 @@ params.page = 1;
                 } 
          }}, 1000);
        } ;
-
+   
+      async function createNewCard(params) {
+        params.page += 1;
+        const data = await getAsyncImage(searchText);
+        renderGalleryMarkap(data.hits);  
+        show(refs.loadMoreBtn);
+      
+      if (data.hits.length > 0 && data.hits.length === totalHits) {
+        disable(refs.loadMoreBtn, refs.spinnerText);
+      }
+      }
+      //console.log(createNewCard(params));
   //  розрахунок максимальної кількості сторінок (Поки не працює)
     // try { const {markup, totalHits} = await getAsyncImage(params); //тут передаю функцію яку хочу обробити в try...catch
     // params.maxPage =  Math.ceil(totalHits / params.per_page); // розрахунок максимальної кількості сторінок 
@@ -80,14 +92,4 @@ params.page = 1;
       // if (data.hits.length > 0 && data.hits.length === totalHits) {
       //   enable(refs.loadMoreBtn, refs.spinnerText); // розблоковую кнопку для натискань
       // }
-       
-      function createNewCard(amount) {
-        params.page += 1;
-    
-       for (let i = 0; i < amount; i++) {
-        renderGalleryMarkap(data.hits);
-        
-      }
-       
-      
-      }
+     
