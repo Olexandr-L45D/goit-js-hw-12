@@ -31,8 +31,6 @@ params.page = 1;
       renderGalleryMarkap(data.hits); //тут передаю функцію, яка відмальовує розмітку (тут не можна СКРОЛ так як вона одразу прокручує вверх )
       disable(refs.loadMoreBtn, refs.spinnerText);
 
-      refs.loadMoreBtn.addEventListener("click", createNewCard); // прослуховуе кнопку >Load more< по кліку
-
     } catch (error) {
       console.log(error);
       handlerErrorUzer(error);
@@ -42,13 +40,14 @@ params.page = 1;
       show(refs.loadMoreBtn);
     }
     };
- 
+
      function handleLoadMore(params) {   // функція при події клік на кнопці яка виконую додавання нових порцій сторінок(збільшую знач page на один, відключаю кнопку, після запиту на сервер відмаловуємо розмітку і включаю як прийшов позитивний результат)
       hiden(refs.loadMoreBtn);
       show(refs.spinnerText); 
      //disable(refs.loadMoreBtn);
       setTimeout(async () => {try {
         const data = await getAsyncImage(searchText);
+        createNewCard(params);
         renderGalleryMarkap(data.hits); // вставляю window.scrollBy після того як вставив в дом зображення
        const galleryItemScrol = document.querySelector('.gallery-item');
        const cardHeight = galleryItemScrol.getBoundingClientRect().height; 
@@ -69,30 +68,25 @@ params.page = 1;
          }}, 1000);
        } ;
    
-      async function createNewCard(params) {
-        params.page += 1;
-        const data = await getAsyncImage(searchText);
-        renderGalleryMarkap(data.hits);  
-        show(refs.loadMoreBtn);
-        try { 
-      if (data.hits.length > 0 && data.hits.length === totalHits) {
-        disable(refs.loadMoreBtn, refs.spinnerText);
-      }
-    } catch (error) {
-            console.log(error);
-          }
-      }
-      //console.log(createNewCard(params));
-  //  розрахунок максимальної кількості сторінок (Поки не працює)
-    // try { const {markup, totalHits} = await getAsyncImage(params); //тут передаю функцію яку хочу обробити в try...catch
-    // params.maxPage =  Math.ceil(totalHits / params.per_page); // розрахунок максимальної кількості сторінок 
-    // // console.log(markup, totalHits); // markup - масиви який створюю в renderGalleryMarkap
-    //    } catch (error) {
-    //      console.log(error);
-    //    }
-
-     // Кінець колекції?
-      // if (data.hits.length > 0 && data.hits.length === totalHits) {
-      //   enable(refs.loadMoreBtn, refs.spinnerText); // розблоковую кнопку для натискань
-      // }
-     
+async function createNewCard(params) {
+  params.page += 1;
+  const data = await getAsyncImage(searchText);
+  params.maxPage =  Math.ceil(params.totalHits / params.per_page);
+  renderGalleryMarkap(data.hits);  
+  // show(refs.loadMoreBtn);
+  try { 
+    if (params.maxPage === params.page) {
+      hiden(refs.loadMoreBtn); hiden(refs.spinnerText); 
+      return
+    }
+if (data.hits.length > 0 && data.hits.length === params.totalHits) {
+  hiden(refs.loadMoreBtn); hiden(refs.spinnerText); 
+  iziToast.error({
+    title: 'Error',
+    message: "We're sorry, but you've reached the end of search results.",
+  });             
+}
+  } catch (error) {
+      console.log(error);
+    }
+ }

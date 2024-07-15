@@ -1,4 +1,3 @@
-//2 functions more
 
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
@@ -50,8 +49,6 @@ galleryContainer.addEventListener('submit', renderGalleryMarkap);
       
   };
 
-// функція виклика повідомлення про помилку and iziToast
-
 export function handlerErrorUzer(error) {
   switch (error)
     {
@@ -77,9 +74,7 @@ export function handlerErrorUzer(error) {
   }
 }
 
-
-// const hiddenBattonClass = "is-hidden";
-const hiddenBattonClass = "hidden";
+const hiddenBattonClass = "hidden"; // змінна через стиль hidden
 // взагалі зникає (коли кінець колекції або до запиту(до сабміту))
 function hiden(button) {
   button.classList.add(hiddenBattonClass);
@@ -90,11 +85,7 @@ function show(button) {
 function disable(button, spinner ) {
   button.disabled = true;
   spinner.classList.remove(hiddenBattonClass);
-} // -show this button and hide this spinner
-//  function enable(button, spinner) {
-//   button.disabled = falce; 
-//   spinner.classList.add(hiddenBattonClass);
-//  }
-export {hiden, show, disable};
+} 
 
+export {hiden, show, disable};
 
