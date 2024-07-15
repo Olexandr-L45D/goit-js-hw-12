@@ -74,10 +74,13 @@ params.page = 1;
         const data = await getAsyncImage(searchText);
         renderGalleryMarkap(data.hits);  
         show(refs.loadMoreBtn);
-      
+        try { 
       if (data.hits.length > 0 && data.hits.length === totalHits) {
         disable(refs.loadMoreBtn, refs.spinnerText);
       }
+    } catch (error) {
+            console.log(error);
+          }
       }
       //console.log(createNewCard(params));
   //  розрахунок максимальної кількості сторінок (Поки не працює)
