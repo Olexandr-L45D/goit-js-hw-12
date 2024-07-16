@@ -19,7 +19,7 @@ var lightbox = new SimpleLightbox('.gallery a', { captionDelay: 200, captionsDat
 export const refs = {
   formSearchImage: document.querySelector(".uzers-form-image"),
   gallery: document.querySelector('.gallery'),
-  loadMoreBtn: document.querySelector('.button-load'), //  це прислуховуєм кнопку з спінером
+  loadMoreBtn: document.querySelector('[data-action="load-more"]'), //  це прислуховуєм кнопку з спінером [data-action="load-more"]
   spinnerText: document.querySelector(".spinner-text") // це спінер тектом під кнопкою
 };
 
