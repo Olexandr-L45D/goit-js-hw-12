@@ -6,10 +6,10 @@ import {handlerErrorUzer, refs} from "./js/render-functions"
 import {renderGalleryMarkap} from "./js/render-functions"
 import  {hiden, show, disable, enable} from "./js/render-functions" // імпортую функції які ховають кнопку -Load more і показують спінер
 
-hiden(refs.loadMoreBtn); // приховав кнопку >Load more</button> перед самим початком як тільки завантажилась сторінка
+hiden(refs.loadMoreBtn); // приховав кнопку Load more - button перед самим початком як тільки завантажилась сторінка
 hiden(refs.spinnerText)
 refs.formSearchImage.addEventListener('submit', onFormSubmit);
-refs.loadMoreBtn.addEventListener("click", handleLoadMore); // прослуховуе кнопку >Load more< по кліку and show text-spiner
+refs.loadMoreBtn.addEventListener("click", handleLoadMore); // прослуховуе кнопку Load more по кліку and show text-spiner
 let searchText = ""  
 let maxStoriges = 0;
  async function onFormSubmit(event) {  
@@ -21,12 +21,12 @@ let maxStoriges = 0;
     if (searchText === "") {
     handlerErrorUzer('outdata');
     return; }
-    show(refs.loadMoreBtn);
+    hiden(refs.loadMoreBtn);
     disable(refs.loadMoreBtn, refs.spinnerText); // кнопка не активна для натискання юзером (під час завантаження, щоб не натискав багато разів)
     try {
      
        const data = await getAsyncImage(searchText); 
-      
+       
       maxStoriges =  Math.ceil(data.totalHits / params.per_page); // бере участь коли закінчаться запити
         
        if (data.hits.length > 0 && data.hits.length !== data.totalHits) {  
@@ -45,7 +45,6 @@ let maxStoriges = 0;
       hiden(refs.loadMoreBtn); hiden(refs.spinnerText); 
     } finally {
       event.target.reset(); //очистка тексту в інпуті
-      //show(refs.loadMoreBtn); hiden(refs.spinnerText);
       hiden(refs.spinnerText)
     }
     };
@@ -78,7 +77,7 @@ let maxStoriges = 0;
                   });
                   refs.loadMoreBtn.removeEventListener("click", handleLoadMore);
                 } 
-         }}, 500);
+         }}, 500); // затримка сеттаймаутом на 0,5 секунди
        } ;
    
      

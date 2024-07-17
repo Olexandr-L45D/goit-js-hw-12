@@ -7,9 +7,9 @@ axios.defaults.baseURL = BASE_URL;  //тут посилання на базов�
       const params = {
         key: API_KEY,
         q: "str",
-        page: 1,
-        per_page: 15,
-        totalHits: 0,
+        imageType: 'photo',
+        orientation: "horizontal",
+        safesearch: true,
       };
 
       export {params};  
@@ -17,7 +17,8 @@ axios.defaults.baseURL = BASE_URL;  //тут посилання на базов�
   async  function getAsyncImage(searchText) {
     params.q = searchText;
      const neWurls = new URLSearchParams(params); 
-     const response = await axios.get(`?${neWurls}`) 
+    const response = await axios.get(`?${neWurls}&q=${searchText}&page=1&per_page=15`) 
+
       return response.data;
     };
     
