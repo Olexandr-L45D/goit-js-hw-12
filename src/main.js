@@ -11,7 +11,7 @@ hiden(refs.spinnerText)
 refs.formSearchImage.addEventListener('submit', onFormSubmit);
 refs.loadMoreBtn.addEventListener("click", handleLoadMore); // прослуховуе кнопку >Load more< по кліку and show text-spiner
 let searchText = ""  
-//params.page = 1;
+
  async function onFormSubmit(event) {  
     event.preventDefault();
     searchText = event.target.searchQuery.value.toLowerCase().trim();  //значення яке написав користувач(прибираєм пробіл та приводим до нижн регістра)
@@ -22,11 +22,12 @@ let searchText = ""
      params.page = 1;
     //disable(refs.loadMoreBtn, refs.spinnerText); // кнопка не активна для натискання юзером (під час завантаження, щоб не натискав багато разів)
     try {
+      
       const data = await getAsyncImage(searchText);
-      params.maxPage =  Math.ceil(data.hits.total / params.per_page);
-      data.hits.totalHits = 500;
-
-      if (data.hits.length > 0 && data.hits.length === data.hits.totalHits) {
+      params.totalHits =  Math.ceil(data.hits.total / params.per_page);
+      
+       if (data.hits.length > 0 && data.hits.length === data.hits.totalHits) {
+       // if (data.hits.total.length > 0 && data.hits.total.length === data.hits.totalHits) {
         show(refs.loadMoreBtn); show(refs.spinnerText);  
        
       } else 
@@ -38,27 +39,25 @@ let searchText = ""
         
       }
       renderGalleryMarkap(data.hits); //тут передаю функцію, яка відмальовує розмітку (тут не можна СКРОЛ так як вона одразу прокручує вверх )
-     // disable(refs.loadMoreBtn, refs.spinnerText);
+     //disable(refs.loadMoreBtn, refs.spinnerText);
+     
       show(refs.loadMoreBtn); show(refs.spinnerText); 
     } catch (error) {
       console.log(error);
       handlerErrorUzer(error);
-       
+      hiden(refs.loadMoreBtn); hiden(refs.spinnerText); 
     } finally {
       event.target.reset(); //очистка тексту в інпуті
-      show(refs.loadMoreBtn);
+      //show(refs.loadMoreBtn); hiden(refs.spinnerText);
+      hiden(refs.spinnerText)
     }
     };
-   
-    // function handleLoadMore() {   // функція при події клік на кнопці яка виконую додавання нових порцій сторінок(збільшую знач page на один, відключаю кнопку, після запиту на сервер відмаловуємо розмітку і включаю як прийшов позитивний результат)
-    //     params.page += 1;
-    //     console.log(params.page);
-    // }
-    //console.log(handleLoadMore());
-
+    
      function handleLoadMore() {   // функція при події клік на кнопці яка виконую додавання нових порцій сторінок(збільшую знач page на один, відключаю кнопку, після запиту на сервер відмаловуємо розмітку і включаю як прийшов позитивний результат)
+      refs.gallery.innerHTML = '';
+      
       params.page += 1;
-      hiden(refs.loadMoreBtn); show(refs.spinnerText); 
+      hiden(refs.loadMoreBtn); hiden(refs.spinnerText); 
     
       setTimeout(async () => {try {
        const data = await getAsyncImage(searchText);
@@ -76,7 +75,7 @@ let searchText = ""
          handlerErrorUzer(error);
        }
          finally {
-          if (params.page === params.maxPage) {
+          if (params.page === params.totalHits) {
                   hiden(refs.loadMoreBtn); hiden(refs.spinnerText);
                   iziToast.error({
                     title: 'Error',

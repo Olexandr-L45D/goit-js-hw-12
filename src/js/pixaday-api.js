@@ -12,15 +12,15 @@ axios.defaults.baseURL = BASE_URL;  //тут посилання на базов�
         image_type: "imageType",
         orientation: 'horizontal',
         safesearch: true,
-        maxPage: 0 // додатковий параметр(який я потім порахую) для обчислення останньої сторінки
+        totalHits: 1
       };
 
       export {params};  
 
   async  function getAsyncImage(searchText) {
     params.q = searchText;
-     const neWurls = new URLSearchParams(params);  
-    const response = await axios.get(`?${neWurls}`)
+     const neWurls = new URLSearchParams(params); 
+     const response = await axios.get(`?${neWurls}`) 
       return response.data;
     };
     
