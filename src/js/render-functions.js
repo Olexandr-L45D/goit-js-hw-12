@@ -86,6 +86,10 @@ function disable(button, spinner ) {
   button.disabled = true;
   spinner.classList.remove(hiddenBattonClass);
 } 
+function enable(button, spinner) {
+  button.disabled = false;
+  spinner.classList.add(hiddenBattonClass);
+}
 
-export {hiden, show, disable};
+export {hiden, show, disable, enable};
 

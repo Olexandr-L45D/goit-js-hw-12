@@ -9,10 +9,7 @@ axios.defaults.baseURL = BASE_URL;  //тут посилання на базов�
         q: "str",
         page: 1,
         per_page: 15,
-        image_type: "imageType",
-        orientation: 'horizontal',
-        safesearch: true,
-        totalHits: 1
+        totalHits: 0,
       };
 
       export {params};  
