@@ -70,7 +70,7 @@ let maxStoriges = 0;
          handlerErrorUzer(error);
        }
          finally {
-          if (params.page === params.totalHits) {
+          if (params.page === maxStoriges) {
                   hiden(refs.loadMoreBtn); hiden(refs.spinnerText);
                   iziToast.error({
                     title: 'Error',
