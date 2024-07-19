@@ -9,7 +9,6 @@ import  {hiden, show, disable, enable} from "./js/render-functions" // імпо�
 hiden(refs.loadMoreBtn); // приховав кнопку Load more - button перед самим початком як тільки завантажилась сторінка
 hiden(refs.spinnerText)
 refs.formSearchImage.addEventListener('submit', onFormSubmit);
-refs.loadMoreBtn.addEventListener("click", handleLoadMore); // прослуховуе кнопку Load more по кліку and show text-spiner
 let searchText = ""  
 let maxStoriges = 0;
  async function onFormSubmit(event) {  
@@ -21,63 +20,64 @@ let maxStoriges = 0;
     if (searchText === "") {
     handlerErrorUzer('outdata');
     return; }
-    hiden(refs.loadMoreBtn);
-    disable(refs.loadMoreBtn, refs.spinnerText); // кнопка не активна для натискання юзером (під час завантаження, щоб не натискав багато разів)
+    hiden(refs.loadMoreBtn); hiden(refs.spinnerText); 
+    disable(refs.loadMoreBtn, refs.spinnerText); 
+
     try {
-     
        const data = await getAsyncImage(searchText); 
-       
       maxStoriges =  Math.ceil(data.totalHits / params.per_page); // бере участь коли закінчаться запити
-        
+      
+      renderGalleryMarkap(data.hits); // малюю розмітку
+     
        if (data.hits.length > 0 && data.hits.length !== data.totalHits) {  
         enable(refs.loadMoreBtn, refs.spinnerText);
+        refs.loadMoreBtn.addEventListener("click", handleLoadMore); // прослуховуе кнопку Load more по кліку and show text-spiner
       } else 
       if (data.hits.length === 0) {
         handlerErrorUzer('nodata'); 
-        hiden(refs.loadMoreBtn); 
+        hiden(refs.loadMoreBtn); hiden(refs.spinnerText); 
         return
       }
-      renderGalleryMarkap(data.hits)
-      show(refs.loadMoreBtn); show(refs.spinnerText); 
+       show(refs.loadMoreBtn); 
     } catch (error) {
       console.log(error);
       handlerErrorUzer(error);
       hiden(refs.loadMoreBtn); hiden(refs.spinnerText); 
     } finally {
-      event.target.reset(); //очистка тексту в інпуті
-      hiden(refs.spinnerText)
+      event.target.reset(); //очистка тексту в інпуті  
     }
     };
     
-     function handleLoadMore() {   // функція при події клік на кнопці яка виконую додавання нових порцій сторінок(збільшую знач page на один, відключаю кнопку, після запиту на сервер відмаловуємо розмітку і включаю як прийшов позитивний результат) 
+     function handleLoadMore() {   // функція при події клік на кнопці- додавання нових порцій сторінок(збільшую знач page на один, відключаю кнопку, після запиту на сервер відмаловуємо розмітку і включаю як прийшов позитивний результат) 
       params.page += 1;
-      hiden(refs.loadMoreBtn); hiden(refs.spinnerText); 
-    
-      setTimeout(async () => {try {
+      disable(refs.loadMoreBtn, refs.spinnerText); 
+      
+      setTimeout(async () => {try { 
        const data = await getAsyncImage(searchText);
-        
-        renderGalleryMarkap(data.hits); // вставляю window.scrollBy після того як вставив в дом зображення
+      
+        renderGalleryMarkap(data.hits); 
        const galleryItemScrol = document.querySelector('.gallery-item');
        const cardHeight = galleryItemScrol.getBoundingClientRect().height; 
-        window.scrollBy({
+        window.scrollBy({                                                 // вставляю window.scrollBy після того як вставив в дом зображення
           top: cardHeight * 2,
           behavior: "smooth",
         });
-        show(refs.loadMoreBtn);
+        show(refs.spinnerText);
        } catch(error) {
          console.log(error);
          handlerErrorUzer(error);
        }
          finally {
+          enable(refs.loadMoreBtn, refs.spinnerText); 
           if (params.page === maxStoriges) {
-                  hiden(refs.loadMoreBtn); hiden(refs.spinnerText);
+                  
                   iziToast.error({
                     title: 'Error',
                     message: "We're sorry, but you've reached the end of search results.",
                   });
-                  refs.loadMoreBtn.removeEventListener("click", handleLoadMore);
+                  refs.loadMoreBtn.removeEventListener("click", handleLoadMore);           
                 } 
-         }}, 500); // затримка сеттаймаутом на 0,5 секунди
+         }}, 500); // затримка сеттаймаутом setTimeout на 0,5 секунди
        } ;
    
      

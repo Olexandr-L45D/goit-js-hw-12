@@ -107,7 +107,7 @@ ol {
   display: flex;
   align-items: center;
   text-align: center;
-   flex-direction: column; 
+  flex-direction: column; 
 }
 
 .button-submit:hover,
@@ -130,21 +130,10 @@ ol {
 .button-load.hidden {
   display: none;
 }
-/* .button-load.is-hidden {
-  display: none;
-}
-.button-load > spinner.is-hidden {
-  display: none;
-} */
-/* .spinner-text.is-hidden {
-  display: none;
-} */
+
 .spinner-text.hidden {
   display: none;
 }
-/* .spinner-text > spinner.is-hidden {
-  display: none;
-} */
 
 .form-link {
   text-decoration: none;
@@ -226,8 +215,7 @@ margin: 5px;
   margin: 0;
 }
 
- 
- .gallery-commant {
+.gallery-commant {
   padding: 5px;
   margin: 5px;
   text-align: center;

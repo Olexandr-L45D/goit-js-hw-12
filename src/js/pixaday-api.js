@@ -7,8 +7,8 @@ const API_KEY = "44760113-b733d2f51a4c6409aa3483a05";
 
       const params = {
         key: API_KEY,
-        q: "str",
-        imageType: 'photo',
+        q: "",
+        image_type: 'photo',
         orientation: "horizontal",
         safesearch: true,
         page: 1,
