@@ -9,6 +9,7 @@ import  {hiden, show, disable, enable} from "./js/render-functions" // імпо�
 hiden(refs.loadMoreBtn); // приховав кнопку Load more - button перед самим початком як тільки завантажилась сторінка
 hiden(refs.spinnerText)
 refs.formSearchImage.addEventListener('submit', onFormSubmit);
+refs.loadMoreBtn.addEventListener("click", handleLoadMore); // прослуховуе кнопку Load more по кліку and show text-spiner
 let searchText = ""  
 let maxStoriges = 0;
  async function onFormSubmit(event) {  
@@ -31,7 +32,7 @@ let maxStoriges = 0;
      
        if (data.hits.length > 0 && data.hits.length !== data.totalHits) {  
         enable(refs.loadMoreBtn, refs.spinnerText);
-        refs.loadMoreBtn.addEventListener("click", handleLoadMore); // прослуховуе кнопку Load more по кліку and show text-spiner
+        
       } else 
       if (data.hits.length === 0) {
         handlerErrorUzer('nodata'); 
@@ -75,7 +76,8 @@ let maxStoriges = 0;
                     title: 'Error',
                     message: "We're sorry, but you've reached the end of search results.",
                   });
-                  refs.loadMoreBtn.removeEventListener("click", handleLoadMore);           
+                  refs.loadMoreBtn.removeEventListener("click", handleLoadMore); 
+                  hiden(refs.loadMoreBtn); hiden(refs.spinnerText);           
                 } 
          }}, 500); // затримка сеттаймаутом setTimeout на 0,5 секунди
        } ;
